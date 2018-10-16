@@ -13,7 +13,9 @@ class Stopwatch extends React.Component {
       } else {
         const startTime = Date.now() - this.state.lapse;
         this.timer = setInterval(() => {
-          this.setState({ lapse: Date.now() - startTime });
+          this.setState({
+            lapse: Date.now() - startTime
+          });
         });
       }
       return { running: !state.running };
@@ -33,7 +35,11 @@ class Stopwatch extends React.Component {
     const { lapse, running } = this.state;
     return (
       <div className="App">
-        <label className="stopwatch">{lapse}ms</label>
+        <div className="stopwatch">
+          <label className="sw-s">
+            {Math.floor(lapse / 1000)}:{("000" + (lapse % 1000)).substr(-3)}
+          </label>
+        </div>
         <button className="start-btn" onClick={this.handleRunClick}>
           {running ? "Stop" : "Start"}
         </button>
