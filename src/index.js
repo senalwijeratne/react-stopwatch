@@ -1,38 +1,38 @@
-import React from "react";
-import ReactDOM from "react-dom";
+import React from "react"
+import ReactDOM from "react-dom"
 
-import "./styles.css";
+import "./styles.css"
 
 class Stopwatch extends React.Component {
-  state = { lapse: 0, running: false };
+  state = { lapse: 0, running: false }
 
-  handleRunClick = () => {
+  handleRunClick = lol => {
     this.setState(state => {
       if (state.running) {
-        clearInterval(this.timer);
+        clearInterval(this.timer)
       } else {
-        const startTime = Date.now() - this.state.lapse;
+        const startTime = Date.now() - this.state.lapse
         this.timer = setInterval(() => {
           this.setState({
             lapse: Date.now() - startTime
-          });
-        });
+          })
+        })
       }
-      return { running: !state.running };
-    });
-  };
+      return { running: !state.running }
+    })
+  }
 
   handleClearClick = () => {
-    clearInterval(this.timer);
-    this.setState({ lapse: 0, running: false });
-  };
+    clearInterval(this.timer)
+    this.setState({ lapse: 0, running: false })
+  }
 
   componentWillUnmount() {
-    clearInterval(this.timer);
+    clearInterval(this.timer)
   }
 
   render() {
-    const { lapse, running } = this.state;
+    const { lapse, running } = this.state
     return (
       <div className="App">
         <div className="stopwatch">
@@ -47,9 +47,9 @@ class Stopwatch extends React.Component {
           Clear
         </button>
       </div>
-    );
+    )
   }
 }
 
-const rootElement = document.getElementById("root");
-ReactDOM.render(<Stopwatch />, rootElement);
+const rootElement = document.getElementById("root")
+ReactDOM.render(<Stopwatch />, rootElement)
